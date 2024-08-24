@@ -8,10 +8,13 @@ import postRoutes from "./routes/postRoutes.js"
 import messageRoutes from "./routes/messageRoutes.js"
 import { v2 as cloudinary } from 'cloudinary'
 import { app, server } from "./socket/socket.js";
-import job from "./cron/cron.js";
+
 dotenv.config();
 connectDB();
-job.start();
+const cors=require("cors")
+app.use(cors())
+var compression = require('compression')
+app.use(compression())
 // const app =express();
 const PORT = process.env.PORT || 5000;
 const __dirname = path.resolve();
@@ -30,12 +33,14 @@ app.use('/api/posts', postRoutes)
 app.use('/api/messages', messageRoutes);
 
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-// react app
-app.get("*", (req, res) => {
-	res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-});
+	// react app
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+	});
+}
 
 
 
