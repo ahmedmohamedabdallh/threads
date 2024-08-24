@@ -26,6 +26,7 @@ import userAtom from '../atoms/userAtom';
 import useShowToast from '../hooks/useShowToast';
 import postsAtom from '../atoms/postsAtom';
 import { useParams } from 'react-router-dom';
+import { baseUrl } from '../../utilis/baseUrl';
 
 
 const CreatePost = () => {
@@ -54,7 +55,7 @@ const CreatePost = () => {
     const handelCreatePost = async () => {
     	setLoading(true);
 		try {
-			const res = await fetch("/api/posts/create", {
+			const res = await fetch(`${baseUrl}/posts/create`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",

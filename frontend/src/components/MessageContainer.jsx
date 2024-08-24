@@ -8,6 +8,7 @@ import { conversationAtom, selectConversationAtom } from '../atoms/messageAtom';
 import userAtom from '../atoms/userAtom';
 import { useSocket } from '../context/SocketContext';
 import messageSound from "../assets/sounds/message.mp3"
+import { baseUrl } from '../../utilis/baseUrl';
 function MessageContainer() {
   const showToast = useShowToast();
 	const selectedConversation = useRecoilValue(selectConversationAtom);
@@ -87,7 +88,7 @@ function MessageContainer() {
 			setMessages([]);
 			try {
 				if (selectedConversation.mock) return;
-				const res = await fetch(`/api/messages/${selectedConversation.userId}`);
+				const res = await fetch(`${baseUrl}/messages/${selectedConversation.userId}`);
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");

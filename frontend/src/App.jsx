@@ -12,8 +12,7 @@ import UpdateProfailPage from './pages/UpdateProfailPage'
 import CreatePost from './components/CreatePost'
 import ChatPage from './pages/ChatPage'
 import SettingsPage from './pages/SettingsPage'
-import { Offline } from 'react-detect-offline'
-import Dess from './components/Dess'
+
 
 
 
@@ -27,9 +26,7 @@ const{pathname}=useLocation()
     <Container maxW={pathname==='/'?{base:"620px",md:"900px"}:"620px"}>
     
       <Header/>
-      <Offline>
-        <Dess/>
-      </Offline>
+   
        <Routes>
         <Route path='/'element={user?<HomePage/>:<Navigate to="/auth"/>}/>
         <Route path='/auth'element={!user?<AuthPage/>:<Navigate to="/"/>}/>

@@ -7,6 +7,7 @@ import useGetUserProfail from '../hooks/useGetUserProfail';
 import { useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import postsAtom from '../atoms/postsAtom';
+import { baseUrl } from '../../utilis/baseUrl';
 
 const UserPage = () => {
   const{user,loading}=useGetUserProfail()
@@ -21,7 +22,7 @@ const UserPage = () => {
 			if (!user) return;
 			setFetchingPosts(true);
 			try {
-				const res = await fetch(`/api/posts/user/${username}`);
+				const res = await fetch(`${baseUrl}/posts/user/${username}`);
 				const data = await res.json();
 				setPosts(data);
 			} catch (error) {

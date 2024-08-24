@@ -10,6 +10,7 @@ import {DeleteIcon} from "@chakra-ui/icons"
 import { useRecoilState, useRecoilValue } from 'recoil'
 import userAtom from '../atoms/userAtom'
 import postsAtom from '../atoms/postsAtom'
+import { baseUrl } from '../../utilis/baseUrl'
 function Post({ post, postedBy}) {
     const [user, setUser] = useState(null);
     const showToast = useShowToast();
@@ -19,7 +20,7 @@ function Post({ post, postedBy}) {
     useEffect(() => {
         const getUser = async () => {
             try {
-                const res = await fetch('/api/users/profail/'+postedBy)
+                const res = await fetch(`${baseUrl}/users/profail/`+postedBy)
                 const data = await res.json()
                 
                 setUser(data)

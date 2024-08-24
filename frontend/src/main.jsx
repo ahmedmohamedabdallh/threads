@@ -8,8 +8,7 @@ import { mode } from '@chakra-ui/theme-tools'
 import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import { SocketContextProvider } from './context/SocketContext.jsx'
-import { Offline } from 'react-detect-offline';
-import Dess from './components/Dess.jsx';
+
 
 
 

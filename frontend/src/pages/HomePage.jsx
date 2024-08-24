@@ -8,6 +8,7 @@ import Post from "../components/Post"
 import postsAtom from "../atoms/postsAtom"
 import SuggestedUsers from "../components/SuggestedUsers"
 import messageSound from "../assets/sounds/message.mp3"
+import { baseUrl } from "../../utilis/baseUrl"
 
 const HomePage = () => {
   const user=useRecoilValue(userAtom)
@@ -24,7 +25,7 @@ const HomePage = () => {
 			}
 
       try {
-        const res=await fetch("/api/posts/feed");
+        const res=await fetch(`${baseUrl}/posts/feed`);
         const data =await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");

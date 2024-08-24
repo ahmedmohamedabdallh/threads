@@ -21,6 +21,7 @@ import useShowToast from "../hooks/useShowToast";
 import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import postsAtom from "../atoms/postsAtom";
+import { baseUrl } from "../../utilis/baseUrl";
 
 ;
 
@@ -38,7 +39,7 @@ const Actions = ({ post}) => {
 		if(isliking)return;
 		setIsliking(true)
 try {
-	const res=await fetch('/api/posts/like/'+post._id,{
+	const res=await fetch(`${baseUrl}/posts/like/`+post._id,{
 		method:"PUT",
 		headers:{
 		   "Content-Type": "application/json",

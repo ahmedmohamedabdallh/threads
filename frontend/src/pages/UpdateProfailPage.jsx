@@ -15,6 +15,7 @@ import { useRecoilState } from "recoil";
 import userAtom from "../atoms/userAtom";
 import userPreviewImg from "../hooks/userPreviewImg";
 import useShowToast from "../hooks/useShowToast";
+import { baseUrl } from "../../utilis/baseUrl";
 
 const UpdateProfailPage = () => {
     const[user,setUser]=useRecoilState(userAtom)
@@ -36,7 +37,7 @@ const UpdateProfailPage = () => {
         if(updating)return;
         setUpdating(true)
 try {
-    const res= await fetch (`/api/users/update/${user._id}`,{
+    const res= await fetch (`${baseUrl}/users/update/${user._id}`,{
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

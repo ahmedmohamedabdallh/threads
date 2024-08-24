@@ -11,6 +11,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import userAtom from "../atoms/userAtom";
 import { DeleteIcon } from "@chakra-ui/icons";
 import postsAtom from "../atoms/postsAtom";
+import { baseUrl } from "../../utilis/baseUrl";
 
 const PostPage = () => {
 
@@ -25,7 +26,7 @@ const PostPage = () => {
     const getPost = async () => {
       setPosts([]);
       try {
-        const res = await fetch(`/api/posts/${pid}`);
+        const res = await fetch(`${baseUrl}/posts/${pid}`);
         const data = await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");

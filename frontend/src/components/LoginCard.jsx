@@ -22,6 +22,7 @@ import authScreenAtom from "../atoms/authAtom";
 import useShowToast from "../hooks/useShowToast";
 import userAtom from "../atoms/userAtom";
 import Joi from "joi";
+import { baseUrl } from "../../utilis/baseUrl";
 
 const LoginCard = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -38,7 +39,7 @@ const LoginCard = () => {
    const handelLogin=async()=>{
     setislogin(true)
     try {
-        const res=await fetch("/api/users/login",{
+        const res=await fetch(`${baseUrl}/users/login`,{
             method:"POST",
             headers:{
                "Content-Type": "application/json"

@@ -25,6 +25,7 @@ import authScreenAtom from "../atoms/authAtom";
 import useShowToast from "../hooks/useShowToast";
 import userAtom from "../atoms/userAtom";
 import Joi from 'joi';
+import { baseUrl } from "../../utilis/baseUrl";
 
 const SingupCard = () =>{ 
     const [showPassword, setShowPassword] = useState(false);
@@ -47,7 +48,7 @@ const SingupCard = () =>{
         console.log(inputs);
         
 try {
-    const res= await fetch("/api/users/signup",{
+    const res= await fetch(`${baseUrl}/users/signup`,{
         method:"POST",
         headers:{
             "Content-Type": "application/json"

@@ -19,7 +19,6 @@
     "@zedux/atoms": "^1.2.2",
     "atoms": "^0.2.0",
     "axios": "^1.7.4",
-    "backend": "file:..",
     "date-fns": "^3.6.0",
     "emoji-picker-react": "^4.11.1",
     "formik": "^2.4.6",

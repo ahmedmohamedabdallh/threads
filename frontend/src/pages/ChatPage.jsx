@@ -9,6 +9,7 @@ import { conversationAtom, selectConversationAtom } from '../atoms/messageAtom';
 import { GiConversation } from "react-icons/gi";
 import userAtom from '../atoms/userAtom';
 import { useSocket } from '../context/SocketContext';
+import { baseUrl } from '../../utilis/baseUrl';
 
 
 
@@ -43,7 +44,7 @@ const ChatPage = () => {
   useEffect(() => {
     const getConversaton = async () => {
       try {
-        const res = await fetch('/api/messages/conversations');
+        const res = await fetch(`${baseUrl}/messages/conversations`);
         const data = await res.json();
         if (data.error) {
           showToast("Error", data.error, "error");

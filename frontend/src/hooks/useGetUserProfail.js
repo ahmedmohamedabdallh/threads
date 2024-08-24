@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useShowToast from "./useShowToast";
 import { useParams } from "react-router-dom";
+import { baseUrl } from "../../utilis/baseUrl";
 
 
 const useGetUserProfail = () => {
@@ -11,7 +12,7 @@ const useGetUserProfail = () => {
     useEffect(()=>{
         const getUser=async()=>{
           try {
-            const res = await fetch(`/api/users/profail/${username}`);
+            const res = await fetch(`${baseUrl}/users/profail/${username}`);
             const data = await res.json();
             if (data.error) {
               showToast("Error", data.error, "error");
