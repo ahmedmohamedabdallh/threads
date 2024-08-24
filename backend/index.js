@@ -11,7 +11,7 @@ import { app, server } from "./socket/socket.js";
 dotenv.config();
 connectDB();
 // const app =express();
-const PORT=process.env.PORT||5000;
+const port=process.env.PORT||5000;
 const __dirname = path.resolve();
 cloudinary.config({
     cloud_name:process.env.CloudINARY_CLOUD_NAME,
@@ -34,4 +34,4 @@ app.use('/api/messages',messageRoutes)
 		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 	});
 
-server.listen(PORT,()=>console.log(`server startde at http://localhost:${PORT}`));
+server.listen(port,()=>console.log(`server startde at http://localhost:${port}`));
